@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Parameterized Suite">
+    <parameter name="browserType" value="chrome" />
+    <parameter name="headless" value="false"></parameter>
+    <test name="Yossi Test">
+        <classes>
+            <class name="com.unity.ui.UnityEntityTest" />
+        </classes>
+    </test>
+</suite>
