@@ -14,7 +14,7 @@ public interface EntityService {
     Call<String> initLogin();
 
     @GET("/admin")
-    Call<String> initAdmin();
+    Call<String> initAdmin(@HeaderMap Map<String, String> headers);
 
     @FormUrlEncoded
     @POST("/admin/login")
@@ -27,12 +27,12 @@ public interface EntityService {
     @POST("/admin/api/resources/Publisher/actions/new")
     Call<String> createPublisher(@HeaderMap Map<String, String> headers, @Body Publisher publisherRequest);
 
-    @Multipart
+    @FormUrlEncoded
     @POST("/admin/api/resources/Publisher/actions/new")
     Call<String> createPublisher(
             @HeaderMap Map<String, String> headers,
-            @Part("name") RequestBody name,
-            @Part("email") RequestBody email
+            @Field("name") String name,
+            @Field("email") String email
     );
 
     @GET("/admin/api/resources/Publisher/actions/list")
@@ -45,14 +45,14 @@ public interface EntityService {
     @POST("/admin/api/resources/Post/actions/new")
     Call<String> createPost( @HeaderMap Map<String, String> headers,
                              @Part("title") RequestBody title, @Part("content") RequestBody content,
-                             @Part("published") RequestBody published, @Part("content") RequestBody publisher,
+                             @Part("published") RequestBody published, @Part("publisher") RequestBody publisher,
                              @Part("content") RequestBody status);
 
     @Multipart
     @PUT("/admin/api/resources/Post/actions/new")
     Call<String> updatePost( @HeaderMap Map<String, String> headers,
                              @Part("title") RequestBody title, @Part("content") RequestBody content,
-                             @Part("published") RequestBody published, @Part("content") RequestBody publisher,
+                             @Part("published") RequestBody published, @Part("publisher") RequestBody publisher,
                              @Part("content") RequestBody status);
 }
 
